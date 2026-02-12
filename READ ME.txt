@@ -1,0 +1,67 @@
+// == DETAILS == //
+    - Gavin Ferguson (21338081)
+    - Christopher Kearney (25259037)
+    - Link to Website: https://2lg4vx.csb.app/profile
+    - Provided Email: dood@gmail.com
+    - Provided Password: Tiesto
+
+    - Summary:
+      The design philosophy of EcoQuest is to gamify
+      sustainable activity through local (missions) which reward users with badges and XP.
+      This involves a backend with users that contain emails, passwords, and an xp stat.
+      The app can locally handle the calculation for levels and badges.
+      Context wrappers track user xp and log in status throughout the app.
+      User data and local services are displayed via components on webpages.
+      Webpages are routed together via App.js and the NavigationBar component allows
+      users to move between pages anywhere in the app.
+      
+
+
+// == FUNCTIONALITY CHECK == //
+
+1.  Use of an API:
+    - src/config/supabase.js
+
+2.  Using a database such as Firebase:
+    - src/config/supabase.js
+    - src/services/userService.js
+
+3.  A source of external JSON:
+    - src/services/missionService.js
+    - src/services/userService.js
+    - src/services/weeklyChallengeService.js
+
+4.  Conditional Rendering:
+    - src/pages/MissionsPage.jsx
+    - src/components/MissionFilter.jsx
+
+5.  Project specific sorting, filtering, searching:
+    - src/pages/MissionsPage.jsx
+    - src/components/MissionFilter.jsx
+
+6.  Using a selection of User Interface elements
+    - src/pages/MissionsPage.jsx
+    - src/pages/AccountPage.jsx
+    - src/pages/HomePage.jsx
+    - src/styles.css
+
+7.  Parent-Child communication:
+    - src/pages/MissionPage.jsx
+    - src/contexts/MissionContent.jsx
+
+8.  Using Multiple Components:
+    - src/pages/MissionsPage.jsx
+    - src/pages/AccountPage.jsx
+    - src/pages/HomePage.jsx
+
+9.  Using React Router:
+    - src/App.jsx
+    - src/components/NavigationBar.jsx
+
+10. Developing your own computation or alogrithms:
+    - src/contexts/UserProgressContext.jsx
+    - src/components/XPProgressBar.jsx
+
+11. Sensible Mixture of Functional and Class-based components:
+    - src/pages/MissionsPage.jsx
+    - src/pages/AccountPage.jsx
