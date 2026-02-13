@@ -1,4 +1,4 @@
-# EcoQuest
+`# EcoQuest
 
 A gamified sustainability tracking web application built with React, Vite, and Supabase.
 
@@ -48,13 +48,14 @@ Deployment:
 
 ## Architecture
 
+```
 src/
 ├── pages/
 ├── services/
 │ └── userService.js
 ├── config/
 │ └── supabase.js
-
+```
 
 Key architectural decisions:
 
