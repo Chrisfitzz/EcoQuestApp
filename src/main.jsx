@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App.js";
+import App from "./App.jsx";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import { UserProgressProvider } from "./contexts/UserProgressContext.jsx";
 import { MissionsProvider } from "./contexts/MissionsContext.jsx";
