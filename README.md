@@ -1,5 +1,7 @@
 `# EcoQuest
 
+![Portfolio Preview](preview.png)
+
 A gamified sustainability tracking web application built with React, Vite, and Supabase.
 
 Live Demo:  
