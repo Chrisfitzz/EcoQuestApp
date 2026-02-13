@@ -43,22 +43,30 @@ async function _lsSet(userId, payload) {
 async function _sbGet(userId) {
   try {
     const { data, error } = await supabase
-      .from("user_progress")
-      .select("*")
-      .eq("user_id", userId)
-      .single();
+        .from("user_progress")
+        .select("*")
+        .eq("user_id", userId)
+        .maybeSingle(); // ✅ allows 0 rows
+
     if (error) {
       return null;
     }
+
+    // If no row exists yet, create one
+    if (!data) {
+      return await _sbCreate(userId);
+    }
+
     return {
       xp: data.xp ?? 0,
       completed: data.completed ?? [],
       badges: data.badges ?? [],
     };
-  } catch (err) {
+  } catch {
     return null;
   }
 }
+
 
 // Function is called when a new user is created - Gav
 async function _sbCreate(userId) {
