@@ -80,10 +80,23 @@ async function _sbCreate(userId) {
   try {
     const payload = { user_id: userId, xp: 0, completed: [], badges: [] };
     const { data, error } = await supabase
-      .from("user_progress")
-      .insert(payload)
-      .select()
-      .single();
+        .from("user_progress")
+        .insert(payload)
+        .select(); // returns an array
+
+    if (error) {
+      console.warn("[user_progress] create error:", error);
+      return await _lsSet(userId, { xp: 0, completed: [], badges: [] });
+    }
+
+    const row = Array.isArray(data) ? data[0] : data;
+
+    return {
+      xp: row?.xp ?? 0,
+      completed: row?.completed ?? [],
+      badges: row?.badges ?? [],
+    };
+
     if (error) {
       // if error we set local storage instead
       console.warn("[user_progress] supabase error:", error);
@@ -103,18 +116,35 @@ async function _sbCreate(userId) {
 async function _sbUpdate(userId, xp, completed, badges) {
   try {
     const { data, error } = await supabase
-      .from("user_progress")
-      .upsert(
-        {
-          user_id: userId,
-          xp: xp ?? 0,
-          completed: completed ?? [],
-          badges: badges ?? [],
-        },
-        { onConflict: "user_id" }
-      )
-      .select()
-      .single();
+        .from("user_progress")
+        .upsert(
+            {
+              user_id: userId,
+              xp: xp ?? 0,
+              completed: completed ?? [],
+              badges: badges ?? [],
+            },
+            { onConflict: "user_id" }
+        )
+        .select(); // array
+
+    if (error) {
+      console.warn("[user_progress] update error:", error);
+      return await _lsSet(userId, {
+        xp: xp ?? 0,
+        completed: completed ?? [],
+        badges: badges ?? [],
+      });
+    }
+
+    const row = Array.isArray(data) ? data[0] : data;
+
+    return {
+      xp: row?.xp ?? 0,
+      completed: row?.completed ?? [],
+      badges: row?.badges ?? [],
+    };
+
     if (error) {
       // If error we set local storage instead
       console.warn("[user_progress] supabase error:", error);
