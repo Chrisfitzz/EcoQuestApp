@@ -141,11 +141,13 @@ Output Directory: dist
 
 SPA routing is handled via a vercel.json rewrite:
 
+```
 {
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
+```
 
 ## Production Hardening
 
@@ -163,7 +165,7 @@ Correct environment variable handling in production
 
 SPA routing configuration for Vercel
 
-What This Project Demonstrates
+## What This Project Demonstrates
 
 Full-stack integration using Supabase
 
